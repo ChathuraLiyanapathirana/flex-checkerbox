@@ -1,0 +1,10 @@
+.test-space{
+  background-color: gray;
+}
+
+.child {
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+  margin:5px;
+}
