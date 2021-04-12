@@ -1,10 +1,12 @@
-.test-space{
-  background-color: gray;
+.test-space {
+  background-color: rgb(233, 233, 233);
+  border-radius: 4px;
+  border: 2px soild rgb(49, 49, 49);
 }
 
 .child {
   width: 30px;
   height: 30px;
   background-color: blue;
-  margin:5px;
+  margin: 5px;
 }
