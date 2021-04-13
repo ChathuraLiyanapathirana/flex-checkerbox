@@ -1,15 +1,14 @@
 .test-space {
-  background-color: rgb(233, 233, 233);
+  background-color: #373737;
   border-radius: 4px;
-  border: 2px soild rgb(49, 49, 49);
-  display: flex;
-  flex: 1;
+  border: 1px solid #000;
   height: 300px;
 }
 
 .child {
   width: 30px;
   height: 30px;
-  background-color: blue;
+  background-color: #84ee59;
   margin: 5px;
+  border-radius: 4px;
 }

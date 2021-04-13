@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Button,
   Form,
   FormGroup,
   Label,
   Input,
-  FormText,
   Card,
   Container,
   Col,
@@ -15,20 +14,32 @@ import {
 import "./style.css";
 
 export default function App() {
-  const [direction, setDirection] = useState("column");
-  const [alignItem, setAlignItem] = useState("center");
-  const [justifyContent, setJustifyContent] = useState("center");
+  const [attributeContent, setAttributeContent] = useState({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  });
 
   const onChangeFlexDirection = value => {
-    setDirection(value);
+    setAttributeContent({
+      ...attributeContent,
+      flexDirection: value
+    });
   };
 
   const onChangeAlignItems = value => {
-    setAlignItem(value);
+    setAttributeContent({
+      ...attributeContent,
+      alignItems: value
+    });
   };
 
   const onChangeJustifyContent = value => {
-    setJustifyContent(value);
+    setAttributeContent({
+      ...attributeContent,
+      justifyContent: value
+    });
   };
 
   return (
@@ -61,7 +72,9 @@ export default function App() {
                 >
                   <option value="flex-start">Flex Start</option>
                   <option value="flex-end">Flex End</option>
-                  <option value="center" selected>Center</option>
+                  <option value="center" defaultValue>
+                    Center
+                  </option>
                   <option value="baseline">Baseline</option>
                   <option value="stretch">Stretch</option>
                 </Input>
@@ -77,7 +90,9 @@ export default function App() {
                 >
                   <option value="flex-start">Flex Start</option>
                   <option value="flex-end">Flex End</option>
-                  <option value="center" selected>Center</option>
+                  <option value="center" defaultValue>
+                    Center
+                  </option>
                   <option value="space-between">Space Between</option>
                   <option value="space-around">Space Around</option>
                   <option value="space-evenly">Space Evenly</option>
@@ -88,18 +103,14 @@ export default function App() {
         </CardBody>
       </Card>
 
-      <div
-        className="test-space my-4 py-4"
-        style={{
-          flexDirection: direction,
-          alignItems: alignItem,
-          justifyContent: justifyContent
-        }}
-      >
+      <div className="test-space my-4 py-4" style={attributeContent}>
         <div className="child" />
         <div className="child" />
         <div className="child" />
       </div>
+      <Alert color="secondary" className="my-4">
+        <pre>{JSON.stringify(attributeContent)}</pre>
+      </Alert>
     </Container>
   );
 }
