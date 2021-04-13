@@ -15,9 +15,21 @@ import {
 import "./style.css";
 
 export default function App() {
-  const [direction, setDirection] = useState("Column");
-  const [alignItem, setAlignItem] = useState("flex-start");
-  const [justifyContent, setJustifyContent] = useState("flex-start");
+  const [direction, setDirection] = useState("column");
+  const [alignItem, setAlignItem] = useState("center");
+  const [justifyContent, setJustifyContent] = useState("center");
+
+  const onChangeFlexDirection = value => {
+    setDirection(value);
+  };
+
+  const onChangeAlignItems = value => {
+    setAlignItem(value);
+  };
+
+  const onChangeJustifyContent = value => {
+    setJustifyContent(value);
+  };
 
   return (
     <Container className="py-3">
@@ -28,43 +40,47 @@ export default function App() {
         <CardBody>
           <Form>
             <FormGroup row>
-              <Label sm={2} for="exampleSelect">
-                Flex Direction
-              </Label>
+              <Label sm={2}>Flex Direction</Label>
               <Col sm={10}>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>Column</option>
-                  <option>Row</option>
+                <Input
+                  type="select"
+                  onChange={event => onChangeFlexDirection(event.target.value)}
+                >
+                  <option value="column">Column</option>
+                  <option value="row">Row</option>
                 </Input>
               </Col>
             </FormGroup>
 
             <FormGroup row>
-              <Label sm={2} for="exampleSelect">
-                Item Align
-              </Label>
+              <Label sm={2}>Item Align</Label>
               <Col sm={10}>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <Input
+                  type="select"
+                  onChange={event => onChangeAlignItems(event.target.value)}
+                >
+                  <option value="flex-start">Flex Start</option>
+                  <option value="flex-end">Flex End</option>
+                  <option value="center" selected>Center</option>
+                  <option value="baseline">Baseline</option>
+                  <option value="stretch">Stretch</option>
                 </Input>
               </Col>
             </FormGroup>
 
             <FormGroup row>
-              <Label sm={2} for="exampleSelect">
-                Justify Content
-              </Label>
+              <Label sm={2}>Justify Content</Label>
               <Col sm={10}>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <Input
+                  type="select"
+                  onChange={event => onChangeJustifyContent(event.target.value)}
+                >
+                  <option value="flex-start">Flex Start</option>
+                  <option value="flex-end">Flex End</option>
+                  <option value="center" selected>Center</option>
+                  <option value="space-between">Space Between</option>
+                  <option value="space-around">Space Around</option>
+                  <option value="space-evenly">Space Evenly</option>
                 </Input>
               </Col>
             </FormGroup>
@@ -72,7 +88,14 @@ export default function App() {
         </CardBody>
       </Card>
 
-      <div className="test-space my-5 py-5">
+      <div
+        className="test-space my-4 py-4"
+        style={{
+          flexDirection: direction,
+          alignItems: alignItem,
+          justifyContent: justifyContent
+        }}
+      >
         <div className="child" />
         <div className="child" />
         <div className="child" />
